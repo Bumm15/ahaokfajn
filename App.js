@@ -8,14 +8,17 @@ import { FIREBASE_AUTH } from './firebaseConfig';
 import ChatView from './views/Chat';
 import NotoficationView from './views/NotificationsView';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-// icons
-import { Entypo } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
 import {registerForPushNotificationsAsync, saveTokenToDatabase} from './helpers/NotificationsHelper';
 import * as Notifications from 'expo-notifications';
 import { DBProvider } from './contexts/dbContext';
-import { AppointmentTimeline } from './views/Test';
+import SettingsView from './views/Settings';
+
+// icons
+import { Ionicons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+
+//import { AppointmentTimeline } from './views/Test';
 //import tw from "twrc"
 
 export default function App() {
@@ -58,7 +61,7 @@ export default function App() {
           }}
           initialParams={{user: user}}
         />
-        <InsideStack.Screen name='Kalendář' component={AppointmentTimeline} options={{ headerShown: false, tabBarIcon: ({ color, size }) => (
+        <InsideStack.Screen name='Kalendář' component={TimelineCalendarScreen} options={{ headerShown: false, tabBarIcon: ({ color, size }) => (
             <Entypo name="calendar" size={size} color={color} />
           )
           }} />
@@ -66,12 +69,20 @@ export default function App() {
             <Ionicons name="notifications" size={size} color={color} />
           ),
           tabBarBadge: notificationsCount === 0 ? null : notificationsCount}}/>
+        <InsideStack.Screen name='Nastavení' component={SettingsView} options={{ headerShown: false, tabBarIcon: ({ color, size }) => (
+            <Ionicons name="settings-sharp" size={size} color={color} />
+          )
+          }} />
       </InsideStack.Navigator>
     )
   }
 
   return (
     <DBProvider>
+      <StatusBar
+     backgroundColor="blue"
+     barStyle="light-content"
+   />
       <NavigationContainer>
         <Stack.Navigator initialRouteName='Login'>
           {user ? (

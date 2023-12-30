@@ -29,6 +29,14 @@ export function DBProvider({ children }) {
 
   }
 
+  function deleteEvent(event_id) {
+
+  }
+
+  function updateEvent(event_id, props) {
+
+  }
+
   /**************** END OF EVENTS ****************/
 
   /**************** CHAT ****************/
@@ -123,6 +131,8 @@ export function DBProvider({ children }) {
         sendNotificationResponse,
         getNewNotificationsCount,
         getNewChatsCount,
+        deleteEvent,
+        updateEvent,
         messages
 
     };

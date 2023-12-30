@@ -1,6 +1,6 @@
 import { CalendarUtils} from 'react-native-calendars';
 
-const EVENT_COLOR = '#e6add8';
+const EVENT_COLOR = 'lightblue';
 const today = new Date();
 export const getDate = (offset = 0) => CalendarUtils.getCalendarDateString(new Date().setDate(today.getDate() + offset));
 console.log(getDate())
@@ -18,7 +18,8 @@ export const timelineEvents = [
     title: 'Neco A',
     place: "Tu a tam",
     summary: 'Popis pro Neco A',
-    color: EVENT_COLOR
+    color: "lightblue",
+    attendees: ["Pája", "Věruška", "Pepa"]
   },
   {
     start: `${getDate()} 01:30:00`,
